@@ -30,6 +30,14 @@ download the DockTor.app file in the root of our github! Its compiled to save yo
 
 There are currently no questions.
 
+
+## Inspiration:
+
+A Tweet from [@room52](https://twitter.com/Room_52/status/979928063453597696) inspired me to create this app.
+
+Source: [https://www.macrumors.com/how-to/macos-dock-show-active-apps/](https://www.macrumors.com/how-to/macos-dock-show-active-apps/)
+App base: [https://scriptingosx.com/2016/04/build-an-application-to-run-a-shell-command-in-xcode-and-swift-part-1/](https://scriptingosx.com/2016/04/build-an-application-to-run-a-shell-command-in-xcode-and-swift-part-1/)
+
 ## License
 Copyright [2018] [Ryan Morris]
 

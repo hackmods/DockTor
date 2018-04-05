@@ -16,6 +16,8 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="DockTor" customModuleProvider="target">
             <connections>
                 <outlet property="ToggleButton" destination="8a9-ve-7ph" id="7ZF-kc-dJj"/>
+                <outlet property="btnCreateFolder" destination="hdP-nk-Bxp" id="BJo-HQ-cBv"/>
+                <outlet property="lblCreateFolderStatus" destination="ZT9-B6-BrJ" id="L6r-zo-mBb"/>
                 <outlet property="lblStatus" destination="X16-Tu-4HT" id="uCM-PM-gUc"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
@@ -80,19 +82,20 @@
                     </menu>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="-327" y="-79"/>
         </menu>
         <window title="DockTor" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="335" y="390" width="442" height="215"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
-            <value key="minSize" type="size" width="350" height="150"/>
-            <value key="maxSize" type="size" width="350" height="150"/>
+            <rect key="contentRect" x="335" y="390" width="442" height="422"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
+            <value key="minSize" type="size" width="442" height="422"/>
+            <value key="maxSize" type="size" width="442" height="422"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="442" height="215"/>
+                <rect key="frame" x="0.0" y="0.0" width="442" height="422"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8a9-ve-7ph">
-                        <rect key="frame" x="169" y="18" width="104" height="32"/>
+                        <rect key="frame" x="169" y="225" width="104" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Toggle" bezelStyle="rounded" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="tmN-bF-bHZ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -102,8 +105,17 @@
                             <action selector="ToggleDockButton:" target="Voe-Tx-rLC" id="CUk-M8-x0g"/>
                         </connections>
                     </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oez-7S-Chc">
+                        <rect key="frame" x="44" y="0.0" width="354" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Version 0.1.3" id="YrK-g0-EZB">
+                            <font key="font" metaFont="miniSystem"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X16-Tu-4HT">
-                        <rect key="frame" x="20" y="54" width="402" height="93"/>
+                        <rect key="frame" x="20" y="261" width="402" height="93"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Loading ..." id="fpe-lz-MMa">
                             <font key="font" size="55" name="CourierNewPSMT"/>
@@ -112,26 +124,46 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1YL-Sj-U1S">
-                        <rect key="frame" x="18" y="155" width="406" height="40"/>
+                        <rect key="frame" x="18" y="362" width="406" height="40"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Want a &quot;clean&quot; looking doc? Prefer less visual clutter? Let DocTor hide those inactive dock icons in a flutter ❗️🗑💙🚀͆🚿" id="XuY-Ox-YPf">
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Want a &quot;clean&quot; looking dock? Prefer less visual clutter? Let DocTor hide those inactive dock icons in a flutter ❗️🗑💙🚀͆🚿" id="XuY-Ox-YPf">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oez-7S-Chc">
-                        <rect key="frame" x="44" y="0.0" width="354" height="17"/>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZT9-B6-BrJ">
+                        <rect key="frame" x="20" y="61" width="402" height="93"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Version 0.1.2" id="YrK-g0-EZB">
-                            <font key="font" metaFont="miniSystem"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="0 Created" id="0qX-8k-xHB">
+                            <font key="font" size="55" name="CourierNewPSMT"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0P9-Cf-G1V">
+                        <rect key="frame" x="18" y="162" width="406" height="40"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Want a quick reference folder? Create a &quot;🔥&quot; reference folder for that dock! 🚀" id="A7a-YP-Ju3">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hdP-nk-Bxp">
+                        <rect key="frame" x="169" y="25" width="104" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Create" bezelStyle="rounded" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="cee-7o-sYa">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" size="15" name="Georgia"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="BtnCreateFolder_Click:" target="Voe-Tx-rLC" id="sJZ-DL-e8O"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="171" y="-182.5"/>
+            <point key="canvasLocation" x="171" y="-79"/>
         </window>
     </objects>
 </document>

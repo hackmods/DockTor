@@ -17,6 +17,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var lblCreateFolderStatus: NSTextField!
     @IBOutlet weak var btnCreateFolder: NSButton!
     
+    @IBOutlet weak var lblCount: NSTextField!
+    @IBOutlet weak var btnCharCount: NSButton!
+    @IBOutlet weak var btnWordCount: NSButton!
+    
     var FolderCreateCount = 0
     var isStaticOnly = false;
     let PurpleColour = NSColor(red: 0.5, green: 0, blue: 1.0, alpha: 1.0)
@@ -137,4 +141,38 @@ class AppDelegate: NSObject, NSApplicationDelegate {
        // lblStatus.backgroundColor = PurpleColour
         lblStatus.stringValue = "⚡️DISABLED⚡️"
     }
+    
+    @IBAction func btnCharCount_Click(_ sender: NSButton) {
+        
+    }
+    
+    @IBAction func btnWordCount_Click(_ sender: NSButton) {
+        
+        sender.isEnabled = false
+        
+        let task = Process()
+        task.launchPath = "/usr/bin/env"
+        //echo $1 | wc -w
+        task.arguments = ["bash", "-c", "echo $1 wc -w"]
+        //0 all the icons
+        
+        let pipe = Pipe()
+        task.standardOutput = pipe
+        
+        task.launch()
+        task.waitUntilExit()
+        
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        let output = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
+        task.suspend()
+        
+        lblCount.textColor = PinkColour
+        let count = output! as String
+        let awesomelabel = "⚡️" + count + "⚡️"
+        lblCount.stringValue = awesomelabel
+        sender.isEnabled = true
+        
+    }
+    
+    
 }

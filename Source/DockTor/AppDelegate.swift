@@ -14,7 +14,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var ToggleButton: NSButton!
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var lblStatus: NSTextField!
+    @IBOutlet weak var lblCreateFolderStatus: NSTextField!
+    @IBOutlet weak var btnCreateFolder: NSButton!
     
+    var FolderCreateCount = 0
     var isStaticOnly = false;
     let PurpleColour = NSColor(red: 0.5, green: 0, blue: 1.0, alpha: 1.0)
     let PinkColour = NSColor(red: 1, green: 0.3, blue: 1.0, alpha: 1.0)
@@ -91,6 +94,33 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         isStaticOnly = !isStaticOnly;
 
         sender.isEnabled = true
+    }
+    
+    @IBAction func BtnCreateFolder_Click(_ sender: NSButton) {
+    
+        FolderCreateCount += 1
+        
+        let task = Process()
+        
+        task.launchPath = "/usr/bin/env"
+        task.arguments = ["bash", "-c", "defaults write com.apple.dock persistent-others -array-add '{\"tile-data\" = {\"list-type\" = 1;}; \"tile-type\" = \"recents-tile\";}'; killall Dock"]
+        
+        
+        sender.isEnabled = false
+        
+        //let pipe = Pipe()
+        //task.standardOutput = pipe
+        task.launch()
+        task.waitUntilExit()
+        
+        //let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        //let output = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
+        //print(output!)
+        
+        isStaticOnly = !isStaticOnly;
+        
+        sender.isEnabled = true
+        lblCreateFolderStatus.stringValue = FolderCreateCount.description + " Created"
     }
     
     func SetEnabled () {
